@@ -1,5 +1,7 @@
-import { useRemoteControlState } from '@/contexts';
-import { BaseRemoteControlAction } from '@/types';
+import {
+  BaseRemoteControlAction,
+  useRemoteControlState,
+} from '@gcorptools/smart-tv-remote-common';
 import { Button, Col, Dropdown, Grid, Tooltip, Typography } from 'antd';
 import { useMemo } from 'react';
 
@@ -7,7 +9,7 @@ const { useBreakpoint } = Grid;
 
 const { Text } = Typography;
 
-const RemoteColumn = ({
+const RemoteControlColumn = ({
   index,
   value,
 }: {
@@ -81,4 +83,4 @@ const RemoteColumn = ({
   );
 };
 
-export default RemoteColumn;
+export default RemoteControlColumn;

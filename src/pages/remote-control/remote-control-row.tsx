@@ -1,8 +1,8 @@
-import RemoteColumn from '@/pages/remote/remote-column';
-import { BaseRemoteControlAction } from '@/types';
+import RemoteControlColumn from '@/pages/remote-control/remote-control-column';
+import { BaseRemoteControlAction } from '@gcorptools/smart-tv-remote-common';
 import { Row } from 'antd';
 
-const RemoteRow = ({
+const RemoteControlRow = ({
   index,
   columns,
   value,
@@ -14,7 +14,7 @@ const RemoteRow = ({
   return (
     <Row style={{ marginBottom: 5 }} justify='center' align='middle'>
       {Array.from(Array(columns)).map((_: any, i: number) => (
-        <RemoteColumn
+        <RemoteControlColumn
           key={`row-${index}-column-${i}`}
           value={value[i] || []}
           index={i}
@@ -24,4 +24,4 @@ const RemoteRow = ({
   );
 };
 
-export default RemoteRow;
+export default RemoteControlRow;

@@ -1,7 +1,9 @@
-import { RemoteControlProvider } from '@/contexts';
-import { RemoteType } from '@/enums';
-import { BraviaRemoteControl } from '@/types';
-import { RemoteControlUtils } from '@/utils';
+import {
+  BraviaRemoteControl,
+  RemoteControlProvider,
+  RemoteControlUtils,
+  RemoteType,
+} from '@gcorptools/smart-tv-remote-common';
 import { ConfigProvider } from 'antd';
 import type { AppProps } from 'next/app';
 import { useMemo } from 'react';

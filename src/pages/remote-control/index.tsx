@@ -1,13 +1,13 @@
 import { CLIENT_ROUTES } from '@/constants';
-import { useRemoteControlState } from '@/contexts';
-import RemoteRow from '@/pages/remote/remote-row';
+import RemoteControlRow from '@/pages/remote-control/remote-control-row';
+import { useRemoteControlState } from '@gcorptools/smart-tv-remote-common';
 import { Button, Divider, Empty, Row, Typography } from 'antd';
 import Router from 'next/router';
 import { useMemo } from 'react';
 
 const { Title } = Typography;
 
-const Remote = () => {
+const RemoteControl = () => {
   const { type, remoteControl, actionsMap } = useRemoteControlState();
   const { rows, columns } = useMemo(() => {
     let row = 0;
@@ -27,10 +27,7 @@ const Remote = () => {
   }, [actionsMap]);
 
   const BackButton = () => (
-    <Button
-      type='primary'
-      onClick={() => Router.push(CLIENT_ROUTES.configuration)}
-    >
+    <Button type='primary' onClick={() => Router.push(CLIENT_ROUTES.connect)}>
       Back to configurations
     </Button>
   );
@@ -54,7 +51,7 @@ const Remote = () => {
       <Divider />
 
       {rows.map((_: any, index: number) => (
-        <RemoteRow
+        <RemoteControlRow
           key={`row-${index}`}
           index={index}
           columns={columns}
@@ -65,4 +62,4 @@ const Remote = () => {
   );
 };
 
-export default Remote;
+export default RemoteControl;

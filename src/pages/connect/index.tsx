@@ -1,7 +1,8 @@
 import { CLIENT_ROUTES } from '@/constants';
-import { useRemoteControlApi } from '@/contexts';
-import { RemoteType } from '@/enums';
-import { RemoteControlCtxStateType } from '@/types/contexts';
+import {
+  useRemoteControlApi,
+  RemoteType,
+} from '@gcorptools/smart-tv-remote-common';
 import {
   Button,
   Checkbox,
@@ -25,7 +26,7 @@ const tailLayout = {
 
 const { Text } = Typography;
 
-const Configuration = ({}: any) => {
+const Connect = ({}: any) => {
   const [form] = Form.useForm();
   const ref = useRef<FormInstance>(null);
   const { read, newRemote } = useRemoteControlApi();
@@ -58,7 +59,7 @@ const Configuration = ({}: any) => {
   const onSubmit = (values: any) => {
     const { type, ...params } = values;
     newRemote(type, params);
-    Router.push(CLIENT_ROUTES.remote);
+    Router.push(CLIENT_ROUTES.remoteControl);
   };
 
   return (
@@ -131,4 +132,4 @@ const Configuration = ({}: any) => {
   );
 };
 
-export default Configuration;
+export default Connect;
