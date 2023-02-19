@@ -86,10 +86,10 @@
     minimatch "^3.1.2"
     strip-json-comments "^3.1.1"
 
-"@gcorptools/smart-tv-remote-common@^0.0.4":
-  version "0.0.4"
-  resolved "https://registry.yarnpkg.com/@gcorptools/smart-tv-remote-common/-/smart-tv-remote-common-0.0.4.tgz#440165ceb0479a4189a11b53dd3d6d6edba4b468"
-  integrity sha512-mSwWrMRJp30ovqGiNhDuaTEnoQu5TxDc68tpAFbYixYbATJRpp/FNdekb+JeJ9dvT5l9N4eHdbiMnxYkJV2IMw==
+"@gcorptools/smart-tv-remote-common@^0.0.5":
+  version "0.0.5"
+  resolved "https://registry.yarnpkg.com/@gcorptools/smart-tv-remote-common/-/smart-tv-remote-common-0.0.5.tgz#306a0f236daa9a413b73d71fa61a99b553d3522a"
+  integrity sha512-z4nuCUYnJ5SqG/eJPwRaocyO5i5IpyHAp0MYvWH1Ngphn+42sQNH0UIfr5oq7dL3rtg3/F6g2vqqQvQj7/lKxQ==
   dependencies:
     antd "^5.2.1"
 

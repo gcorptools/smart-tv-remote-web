@@ -10,7 +10,7 @@
     "lint": "next lint"
   },
   "dependencies": {
-    "@gcorptools/smart-tv-remote-common": "^0.0.4",
+    "@gcorptools/smart-tv-remote-common": "^0.0.5",
     "@next/font": "13.1.6",
     "@types/node": "18.14.0",
     "@types/react": "18.0.28",
