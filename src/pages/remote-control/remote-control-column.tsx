@@ -18,6 +18,7 @@ const RemoteControlColumn = ({
 }) => {
   const { remoteControl } = useRemoteControlState();
   const screens = useBreakpoint();
+  const safeValue = useMemo(() => value || [], [value]);
   const { buttonStyle, dropdownStyle, colSpan } = useMemo(
     () =>
       screens.lg
@@ -39,10 +40,10 @@ const RemoteControlColumn = ({
   };
 
   const Buttons = () => {
-    if (!value.length) {
+    if (!safeValue.length) {
       return <Button style={buttonStyle} disabled></Button>;
     }
-    const [first, ...others] = value;
+    const [first, ...others] = safeValue;
     if (!others.length || !screens.lg) {
       return (
         <Tooltip title={first.label}>
