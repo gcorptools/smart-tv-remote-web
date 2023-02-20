@@ -11,6 +11,10 @@ const Home = () => {
         <title>Smart TV Remote</title>
         <meta name='description' content='Control your Smart TV from here' />
         <meta name='viewport' content='width=device-width, initial-scale=1' />
+        <meta
+          http-equiv='Content-Security-Policy'
+          content='upgrade-insecure-requests'
+        />
         <link rel='icon' href='/favicon.ico' />
       </Head>
       <main className={styles.main}>
