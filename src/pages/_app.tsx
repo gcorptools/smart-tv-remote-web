@@ -6,7 +6,7 @@ import {
 } from '@gcorptools/smart-tv-remote-common';
 import { ConfigProvider } from 'antd';
 import type { AppProps } from 'next/app';
-import { useMemo } from 'react';
+import { useCallback, useMemo } from 'react';
 
 const App = ({ Component, pageProps }: AppProps) => {
   const remoteControlUtils = useMemo(() => {
@@ -18,6 +18,28 @@ const App = ({ Component, pageProps }: AppProps) => {
     return instance;
   }, []);
 
+  const isBrowser = useCallback(() => typeof window !== 'undefined', []);
+
+  const storeKey = useCallback(
+    (key: string, value: string) => {
+      if (!isBrowser()) {
+        return;
+      }
+      localStorage.setItem(key, value);
+    },
+    [isBrowser]
+  );
+
+  const readKey = useCallback(
+    (key: string) => {
+      if (!isBrowser()) {
+        return null;
+      }
+      localStorage.getItem(key);
+    },
+    [isBrowser]
+  );
+
   return (
     <ConfigProvider
       theme={{
@@ -26,7 +48,11 @@ const App = ({ Component, pageProps }: AppProps) => {
         },
       }}
     >
-      <RemoteControlProvider utils={remoteControlUtils}>
+      <RemoteControlProvider
+        utils={remoteControlUtils}
+        storeKey={storeKey}
+        readKey={readKey}
+      >
         <Component {...pageProps} />
       </RemoteControlProvider>
     </ConfigProvider>

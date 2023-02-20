@@ -88,7 +88,7 @@ const Connect = ({}: any) => {
         name='domain'
         label='Domain'
         rules={[{ required: true }]}
-        help='ie: 192.168.1.1'
+        help='ie: http://192.168.1.1'
       >
         <Input />
       </Form.Item>
