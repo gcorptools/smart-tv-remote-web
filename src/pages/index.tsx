@@ -12,8 +12,9 @@ const Home = () => {
         <meta name='description' content='Control your Smart TV from here' />
         <meta name='viewport' content='width=device-width, initial-scale=1' />
         <meta
-          http-equiv='Content-Security-Policy'
-          content='upgrade-insecure-requests'
+          httpEquiv='Content-Security-Policy-Report-Only'
+          /* content='upgrade-insecure-requests' */
+          content="default-src 'self'"
         />
         <link rel='icon' href='/favicon.ico' />
       </Head>

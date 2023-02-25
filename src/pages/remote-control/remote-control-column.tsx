@@ -1,5 +1,6 @@
+import { WebRemoteAction } from '@/constants';
 import {
-  BaseRemoteControlAction,
+  RemoteControlAction,
   useRemoteControlState,
 } from '@gcorptools/smart-tv-remote-common';
 import { Button, Col, Dropdown, Grid, Tooltip, Typography } from 'antd';
@@ -14,7 +15,7 @@ const RemoteControlColumn = ({
   value,
 }: {
   index: number;
-  value: BaseRemoteControlAction[];
+  value: RemoteControlAction[];
 }) => {
   const { remoteControl } = useRemoteControlState();
   const screens = useBreakpoint();
@@ -35,7 +36,7 @@ const RemoteControlColumn = ({
     [screens.lg]
   );
 
-  const onClick = (action: BaseRemoteControlAction) => {
+  const onClick = (action: RemoteControlAction) => {
     remoteControl?.sendAction(action);
   };
 
@@ -48,16 +49,16 @@ const RemoteControlColumn = ({
       return (
         <Tooltip title={first.label}>
           <Button style={buttonStyle} onClick={() => onClick(first)}>
-            {first.icon}
+            {(first as WebRemoteAction).icon}
           </Button>
         </Tooltip>
       );
     }
 
-    const items = others.map((v: BaseRemoteControlAction) => ({
+    const items = others.map((v: RemoteControlAction) => ({
       label: (
         <Tooltip title={v.label}>
-          <Text style={buttonStyle}>{v.icon}</Text>
+          <Text style={buttonStyle}>{(v as WebRemoteAction).icon}</Text>
         </Tooltip>
       ),
       key: v.label,
@@ -72,7 +73,7 @@ const RemoteControlColumn = ({
         onClick={() => onClick(first)}
       >
         <Tooltip title={first.label}>
-          <Text style={dropdownStyle}>{first.icon}</Text>
+          <Text style={dropdownStyle}>{(first as WebRemoteAction).icon}</Text>
         </Tooltip>
       </Dropdown.Button>
     );

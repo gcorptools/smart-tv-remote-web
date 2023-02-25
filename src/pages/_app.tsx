@@ -1,5 +1,5 @@
 import {
-  BraviaRemoteControl,
+  SonyRemoteControl,
   RemoteControlProvider,
   RemoteControlUtils,
   RemoteType,
@@ -12,33 +12,20 @@ const App = ({ Component, pageProps }: AppProps) => {
   const remoteControlUtils = useMemo(() => {
     const instance = RemoteControlUtils.getInstance();
     instance.setTypeMap({
-      [RemoteType.Bravia]: BraviaRemoteControl,
-      [RemoteType.Samsung]: BraviaRemoteControl,
+      [RemoteType.Sony]: SonyRemoteControl,
+      [RemoteType.Samsung]: SonyRemoteControl,
     });
     return instance;
   }, []);
 
-  const isBrowser = useCallback(() => typeof window !== 'undefined', []);
+  const onSuccess = useCallback((result: any) => {
+    console.log('Storing called');
+    console.log('result', result);
+  }, []);
 
-  const storeKey = useCallback(
-    (key: string, value: string) => {
-      if (!isBrowser()) {
-        return;
-      }
-      localStorage.setItem(key, value);
-    },
-    [isBrowser]
-  );
-
-  const readKey = useCallback(
-    (key: string) => {
-      if (!isBrowser()) {
-        return null;
-      }
-      localStorage.getItem(key);
-    },
-    [isBrowser]
-  );
+  const onError = useCallback((err: any) => {
+    console.log('error', err);
+  }, []);
 
   return (
     <ConfigProvider
@@ -50,8 +37,8 @@ const App = ({ Component, pageProps }: AppProps) => {
     >
       <RemoteControlProvider
         utils={remoteControlUtils}
-        storeKey={storeKey}
-        readKey={readKey}
+        onSuccess={onSuccess}
+        onError={onError}
       >
         <Component {...pageProps} />
       </RemoteControlProvider>

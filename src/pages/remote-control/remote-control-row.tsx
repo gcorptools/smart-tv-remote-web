@@ -1,5 +1,5 @@
 import RemoteControlColumn from '@/pages/remote-control/remote-control-column';
-import { BaseRemoteControlAction } from '@gcorptools/smart-tv-remote-common';
+import { RemoteControlAction } from '@gcorptools/smart-tv-remote-common';
 import { Row } from 'antd';
 import { useMemo } from 'react';
 
@@ -10,7 +10,7 @@ const RemoteControlRow = ({
 }: {
   index: number;
   columns: number;
-  value: Record<number, BaseRemoteControlAction[]>;
+  value: Record<number, RemoteControlAction[]>;
 }) => {
   const safeValue = useMemo(() => value || {}, [value]);
 
